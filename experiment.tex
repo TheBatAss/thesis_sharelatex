@@ -1,0 +1,63 @@
+\chapter{Experiment}
+
+TODO: Intoduction to this chapter
+
+
+
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{rcccccc}
+\cline{2-7}
+\multicolumn{1}{r|}{Exercise} & \multicolumn{1}{l|}{slider\_grey} & \multicolumn{1}{l|}{slider\_num} & \multicolumn{1}{l|}{wrist\_grey} & \multicolumn{1}{l|}{wrist\_num} & \multicolumn{1}{l|}{arm\_grey} & \multicolumn{1}{l|}{arm\_num} \\ \cline{2-7} 
+\multicolumn{1}{r|}{ID} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{3} & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} \\ \cline{2-7} 
+\multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
+ & \multicolumn{6}{c}{Exercise Order} \\
+Participant id & First & Second & Third & Fourth & Fifth & Sixth \\ \cline{2-7} 
+\multicolumn{1}{r|}{0, 6, 12, 18} & \multicolumn{1}{c|}{\textbf{0}} & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\textbf{4}} & \multicolumn{1}{c|}{\textbf{3}} \\ \cline{2-7} 
+\multicolumn{1}{r|}{1, 7, 13, 17} & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\textbf{0}} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{4}} \\ \cline{2-7} 
+\multicolumn{1}{r|}{2, 8, 14, 20} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{4}} & \multicolumn{1}{c|}{\textbf{0}} & \multicolumn{1}{c|}{\textbf{5}} \\ \cline{2-7} 
+\multicolumn{1}{r|}{3, 9, 15, 21} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{4}} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{0}} \\ \cline{2-7} 
+\multicolumn{1}{r|}{4, 10, 16, 22} & \multicolumn{1}{c|}{\textbf{4}} & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{0}} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\textbf{1}} \\ \cline{2-7} 
+\multicolumn{1}{r|}{5, 11, 17, 23} & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{0}} & \multicolumn{1}{c|}{\textbf{4}} & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{2}} \\ \cline{2-7} 
+\end{tabular}%
+}
+\caption{Exercise ordering table based on a Balanced Latin Square}
+\label{my-label}
+\end{table}
+
+
+
+
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lll}
+column name                          & type                                  & descriptiom                                                                                                                                                            \\ \hline
+\multicolumn{1}{|l|}{id}             & \multicolumn{1}{l|}{int}              & \multicolumn{1}{l|}{Uniqe id for each particpant}                                                                                                                      \\ \hline
+\multicolumn{1}{|l|}{gender}         & \multicolumn{1}{l|}{String}           & \multicolumn{1}{l|}{Participant gender: "Male" or "Female"**}                                                                                                          \\ \hline
+\multicolumn{1}{|l|}{age}            & \multicolumn{1}{l|}{int}              & \multicolumn{1}{l|}{Participant age**}                                                                                                                                 \\ \hline
+\multicolumn{1}{|l|}{time}           & \multicolumn{1}{l|}{Date object}      & \multicolumn{1}{l|}{Timestamp when input was registered}                                                                                                               \\ \hline
+\multicolumn{1}{|l|}{type}           & \multicolumn{1}{l|}{String}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Type of exercise: "slider\_grey", "slider\_num", "wrist\_grey",\\ "wrist\_num", "arm\_grey" or "arm\_num"\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{type\_order}    & \multicolumn{1}{l|}{int}              & \multicolumn{1}{l|}{Order for the type of exercise: 0-5*}                                                                                                              \\ \hline
+\multicolumn{1}{|l|}{stim\_order}    & \multicolumn{1}{l|}{int}              & \multicolumn{1}{l|}{Order for the stimuli: 0-49 or 0-100*}                                                                                                             \\ \hline
+\multicolumn{1}{|l|}{stim}           & \multicolumn{1}{l|}{int}              & \multicolumn{1}{l|}{Stimuli: 0-49 or 0-100}                                                                                                                            \\ \hline
+\multicolumn{1}{|l|}{response}       & \multicolumn{1}{l|}{double}           & \multicolumn{1}{l|}{Response: 0.0-49.0 or 0.0-100.0}                                                                                                                   \\ \hline
+\multicolumn{1}{|l|}{pitch}          & \multicolumn{1}{l|}{double or String} & \multicolumn{1}{l|}{Value of pitch for exercises using the wristband, else "NA"**}                                                                                     \\ \hline
+\multicolumn{1}{|l|}{roll}           & \multicolumn{1}{l|}{double or String} & \multicolumn{1}{l|}{Value of roll for exercises using the wristband, else "NA"**}                                                                                      \\ \hline
+\multicolumn{1}{|l|}{yaw}            & \multicolumn{1}{l|}{double or String} & \multicolumn{1}{l|}{Value of yaw for exercises using the wristband, else "NA"**}                                                                                       \\ \hline
+\multicolumn{1}{|l|}{reaction\_time} & \multicolumn{1}{l|}{long}             & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Time in milliseconds from the stimuli was shown\\ until a response was registred\end{tabular}}                          \\ \hline
+                                     &                                       & *Redundant data. **Data not investigated                                                                                                                              
+\end{tabular}%
+}
+\caption{My caption}
+\label{my-label}
+\end{table}
