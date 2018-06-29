@@ -173,10 +173,7 @@ Comparing the num exercises we agian see that there is a clear difference betwee
 Comparing grey exercises to num exercises only makes sence if comparing them with the same input method. Doing so we see the lowest p value and highest calculated t-statistic across the board when comparing slider\_grey to slider\_num, this is not surprising when we know how well slider\_num performed. This indicates that there is a large difference when asked to rate shades of grey using the slider and rate integers using the slider. Both wrist and arm shows to be similar when comparing the grey exercise to the num exercise, and it is quite interesting to see that wrist\_num and wrist\_grey has the highest change of being significant similar across the board. 
 
 
-So we must conclude that these two input methods (arm and wrist) are quite alike, while we can't say for sure if they are similar to slider when rating shades of grey we can say for curtain that arm and wrist is quite different from slider when rating integers.
-
-
-While the t-test lest us examine the likely hood of two data sets to be similar or not, it can't tell us which performs better.
+With these results we must conclude that the two input methods arm and wrist are quite alike, while we can't say for sure if they are similar to slider when rating shades of grey we can say for curtain that arm and wrist is quite different from slider when rating integers. While the t-test lest us examine the likely hood of two data sets to be similar or not, it can't tell us which performs better.
 
 
 
@@ -200,8 +197,62 @@ While the t-test lest us examine the likely hood of two data sets to be similar 
 \label{ttest}
 \end{table}
 
-Summarizing on the accuracy performance of the three input methods it is quite clear when it comes to rating integers that the slider outperforms both arm and hand. When it comes to rating shades of grey there seems to be no clear significant difference between the three inputs methods. And between arm and wrist 
+Summarizing on the accuracy performance of the three input methods it is quite clear when it comes to rating integers that the slider outperforms both arm and hand. When it comes to rating shades of grey there seems to be no clear significant difference between the three inputs methods. And with the input methods arm and wrist there doesn't seem to be a significant difference in rating shades of grey to rating integers.
 
 \section{Reaction Time}
+The reaction time for each trial was recorded, and short analysis showed that there were no significant difference between the six exercises as shown in Table \ref{reaction_time}. There is only a little more than a second difference between the mean reaction time of fastest and slowest exercises. Because of this no further investigation of the reaction time was conducted. The results mean that it doesn't take a significantly longer time to use the wristband than to use the slider, keep in mind that the reaction time was recorded from when stimuli was showed on screen until the participant pressed the submit button. For real life use this gives the wristband a significant advantage, since it wouldn't take much longer to use the wristband in real life than it did in the experiment, but if one where to use a digital VAS on a smartwatch the person would first have to activate the smartwatch and go through the interactions required to input the value This would involve more steps than was present in the experiment, meaning a longer total interaction time.
+
+\begin{table}[]
+\centering
+\begin{tabular}{rccc}
+\multicolumn{1}{c}{} & Mean & Median & \begin{tabular}[c]{@{}c@{}}Standard\\ deviation\end{tabular} \\ \cline{2-4} 
+\multicolumn{1}{r|}{slider\_grey} & \multicolumn{1}{c|}{3.589} & \multicolumn{1}{c|}{2.672} & \multicolumn{1}{c|}{2.981} \\ \cline{2-4} 
+\multicolumn{1}{r|}{slider\_num} & \multicolumn{1}{c|}{4.552} & \multicolumn{1}{c|}{3.942} & \multicolumn{1}{c|}{2.436} \\ \cline{2-4} 
+\multicolumn{1}{r|}{wrist\_grey} & \multicolumn{1}{c|}{4.089} & \multicolumn{1}{c|}{3.195} & \multicolumn{1}{c|}{2.588} \\ \cline{2-4} 
+\multicolumn{1}{r|}{wrist\_num} & \multicolumn{1}{c|}{4.376} & \multicolumn{1}{c|}{3.614} & \multicolumn{1}{c|}{2.553} \\ \cline{2-4} 
+\multicolumn{1}{r|}{arm\_grey} & \multicolumn{1}{c|}{4.338} & \multicolumn{1}{c|}{3.563} & \multicolumn{1}{c|}{2.522} \\ \cline{2-4} 
+\multicolumn{1}{r|}{arm\_num} & \multicolumn{1}{c|}{4.618} & \multicolumn{1}{c|}{3.823} & \multicolumn{1}{c|}{2.633} \\ \cline{2-4} 
+\end{tabular}
+\caption{Reaction time (seconds) for each exercise}
+\label{reaction_time}
+\end{table}
+
+
 
 \section{Post Experiment Survey}
+After the experiment the participants were asked to fill in a survey, the full survey and all the answers can be found in Appendix \ref{survey}. Unfortunately an unknown error occurred while collecting the answers, resulting in three lost answers. This section will show the results of the most relevant questions.
+
+Given the option between the arm and wrist method the participants where asked which method they preferred, which they felt was more accurate and which they felt was most comfortable. For each question they were also given the option to answer that they felt the same for both methods. The results can be seen in Table \ref{arm_vs_wrist}. Among the participants that preferred the arm method they the common answer to why was that the greater range of motion allowed them to have higher precision. For the participant preferring the wrist the most common reason was that it was more comfortable. For the participant that felt that the arm method was more accurate their reason was that it had more precision, making it easier to make small adjustment. The two participants that felt the wrist was more accurate said that they just felt like it. One participant that felt the methods to be equally accurate explained that the task felt difficult in both cases, but with practice and feedback that one could become accurate when using either method. The many participants that felt that the wrist method was more comfortable explained that it was less hassle, less awkward movement and that they didn't get tired. Among the participant rating the two method equally comfortable their comments was that neither of the methods were uncomfortable to use. 
+
+
+\begin{table}[]
+\centering
+\begin{tabular}{rccc}
+\multicolumn{1}{c}{} & arm & wrist & equal \\ \cline{2-4} 
+\multicolumn{1}{r|}{Preferred} & \multicolumn{1}{c|}{38.1\%} & \multicolumn{1}{c|}{42.9\%} & \multicolumn{1}{c|}{19\%} \\ \cline{2-4} 
+\multicolumn{1}{r|}{Accurate} & \multicolumn{1}{c|}{81\%} & \multicolumn{1}{c|}{9.5\%} & \multicolumn{1}{c|}{9.5\%} \\ \cline{2-4} 
+\multicolumn{1}{r|}{Comfort} & \multicolumn{1}{c|}{9.5\%} & \multicolumn{1}{c|}{61.9\%} & \multicolumn{1}{c|}{28.6\%} \\ \cline{2-4} 
+\end{tabular}
+\caption{Answers for arm vs wrist}
+\label{arm_vs_wrist}
+\end{table}
+
+The participants was asked if they had any prior experience using any kind of wearable devices, and with which devices (it was possible to check multiple devices). The results can be seen in Figure \ref{wearable_experience}. This showed that participants represented a good mixture of experience with wearable devices. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/wearable_experience.png}
+    \caption{Participants prior experience with wearable devices}
+    \label{wearable_experience}
+\end{figure}
+
+Lastly the participant had a use case explained, where the had to imagine that they suffered from migraines and that their doctor had asked them to log whenever they had a headache and how severe it was. They where then presented with five different methods to log the headaches (which was described in detail) pen and paper, app on smartphone, app on smartwatch, the arm method or the wrist method. They where then asked to order all the method from most preferred to least preferred, the result can be seen in Figure \ref{preferred_method}. The results clearly show that the participants mostly preferred the wristband over the other methods, with pen and paper being the most disliked method. This question should only be seen as an indication, the question required the participants to think of a complex use case and make decisions on things where they probably don't have every piece of information to in order to take an informed decision. That being said the results shows promise for wristband device using the arm and wrist gestures.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{figures/preferred_method.png}
+    \caption{Rating of preferred method (1 is most preferred, 5 is least preferred)}
+    \label{preferred_method}
+\end{figure}
+
+Based on all of the results, both from the experiment and the survey, is shows great promise for a use case for the wristband. It was shown that the performance of the wristband did just as good for rating shades of grey which argues it would perform well for recording  psychological events, where their isn't a specific value to record, but instead what the user feels. The arm and wrist methods where shown to perform about the same, therefor either could be recommended. Based on the survey it seems to be a trade off between the feeling of accuracy and comfort, but since it has been shown that their isn't a significant difference in accuracy the wrist method would be preferred to achieve a higher level of comfort.
