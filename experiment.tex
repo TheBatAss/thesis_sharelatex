@@ -10,6 +10,15 @@ This chapter will describe the method of the experiment conducted in order to co
 
 The two types of stimuli will be referred to as \say{num} and \say{grey} for the integer and shade of grey respectfully. With these three input methods and two stimuli a total of six different exercises must be conducted. The naming for each of these exercises is a combination of the input method and stimuli, e.g. turning your wrist to input a shade of grey will be referred to as \say{wrist\_grey}. All of the exercise's names can be seen in the top of Table \ref{latin}. The rest of this section will cover every aspect of this in more detail.
 
+In Figure \ref{ex_jakob} we see a participant during the training before the experiment, is shows how the experiment was setup and provides a good basic understanding of how the experiment was executed.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/ex1.jpg}
+    \caption{Participant during training with the wristband before starting the experiment}
+    \label{ex_jakob}
+\end{figure}
+
 % % % % % % % % % % % % % % % % % % % % % % % %
 % Participants % Participants % Participants %
 % % % % % % % % % % % % % % % % % % % % % % % %
@@ -229,18 +238,17 @@ They were then taken to the \say{Train} screen of the app, where they were given
 
 After training they were instructed on the structure of the experiment. They were told about the three input methods and two kinds of stimuli, and that there would be six exercises in total. They were told that each exercise would start with an explanation screen, then show a stimuli that they had to rate according to the instructions. They were told that each exercise had several stimuli, but they weren't told the exact amount, only that they had to continue the exercises until the saw the finish screen. They where told that if they where unhappy with an input, they could just press the button on the wristband again or adjust the slider before they pressed submit, but after pressing submit the input was final. Once they confirmed that they understood the instructions (any questions about the procedure was answered) they where taken to the experiment screen, where they registered their age and gender and then started the experiment. Most participants had no problems following the on screen instructions, but some participants asked questions during the experiment to clarify the task they had to perform. 
 
-After completing the experiment they were handed the survey (Appendix \ref{survey}) on a computer and asked to answer it.
+After completing the experiment they were handed the survey (Appendix \ref{survey}) on a computer and asked to answer it. 
 
 % % % % % % % % % % % % % % % % % % % %
 % Design % Design % Design %  Design %
 % % % % % % % % % % % % % % % % % % % %
-\subsection{Design}
+\section{Design}
+This experiment was a 3 $\times$ 2 within-subject design, with two independent variables (numbers and shades of grey) testing three dependent variables (the input methods, slider, arm, wrist) \textbf{Jakob: er det korrekt antaget?}. The independent variables has the stimuli value associated to it, likewise the dependent variables has the response (scaled value) associated to it. The goal of the experiment is to compare the accuracy of the dependent variables to each other with the independent variables being the ground truth.
 
+The within-subject design was chosen in order to achieve more data with less participants, this also balance any variance due to participants’ predispositions and it will be approximately the same across test conditions. Unfortunately this can introduce bias because of the practice effect. To prevent this as much as possible counterbalancing has been introduced using the balanced Latin square seen in Table \ref{latin}. This requires a multiple of six participants and it was decided to have 24 participants providing a good amount of data while still being achievable within the given time frame.
 
-Within-subject: less people, variance due to participants’ predispositions will be approximately the same across test conditions.
-
-Balanced Latin Square
-
+Each of the six exercises consisted of 20 trials, with 24 participants that totaled to 2880 trials/data points in total.
 
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
@@ -278,12 +286,13 @@ Participant id & First & Second & Third & Fourth & Fifth & Sixth \\ \cline{2-7}
 % PILOT TEST % PILOT TEST % PILOT TEST %
 % % % % % % % % % % % % % % % % % % % % %
 \section{Pilot tests}
-Recording the time to complete the experiment. (include the data).
+Small pilot test was ran throughout the development of the experiment and app. This ensured that the experiment stayed as streamlined as possible. When the implementation of the experiment app was completed some pilots test was ran in order to determine how long it took to complete the exercises. Figure \ref{pilot} shows the results of seven pilots with varying numbers of stimuli for each exercise. Not surprisingly there was a linear correlation between number of stimuli and completion time. It was a goal to only have the experiment take about 15 minutes for each participant, with about 10 minutes for the experiment and 5 minutes for introduction, training, survey etc. Therefor based on the results 20 stimuli per exercise was chosen, since it took about 10 minutes to complete.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/comp_time.png}
+    \caption{Completion time of pilot tests}
+    \label{pilot}
+\end{figure}
 
-
-
-
-
-
-
+After the initial seven pilots tests, another four pilot tests was conducted, this time with the form of the experiment in mind, looking to see if anything needed changing e.g. the instructions given, the survey etc. Based on these four tests the only thing that was changed was to include age and gender in the survey (even though it could already be conducted by cross referencing participant ID in the survey with the data collected). Since this was the only change to the execution of the experiment it was decided to include these four pilot test in the results of the experiment. No factors surrounding the experiment itself had been changed, only the survey.
