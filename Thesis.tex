@@ -47,6 +47,26 @@
 %==================================================================================================
 % THESIS STRUCTURE  (Modifiy to include more chapters etc)
 %==================================================================================================
+
+
+\usepackage{float}
+\usepackage{aliascnt}
+\newaliascnt{eqfloat}{equation}
+\newfloat{eqfloat}{h}{eqflts}
+\floatname{eqfloat}{Equation}
+
+\newcommand*{\ORGeqfloat}{}
+\let\ORGeqfloat\eqfloat
+\def\eqfloat{%
+  \let\ORIGINALcaption\caption
+  \def\caption{%
+    \addtocounter{equation}{-1}%
+    \ORIGINALcaption
+  }%
+  \ORGeqfloat
+}
+
+
 \begin{document}
 %------------------------
 %Pre-frontmatter material

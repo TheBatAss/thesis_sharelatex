@@ -4,11 +4,11 @@ This chapter will describe the method of the experiment conducted in order to co
 
 \begin{enumerate}
 \item The digital VAS. This is using a slider on the tablet. This input method will be referred to as \say{slider}
-\item Using the wristband and the gesture of turning the wrist as described in Figure \ref{roll}. This input method will be referred to as \say{wrist}
-\item Using the wristband and the gesture of raising the lower arm as described in Figure \ref{pitch}. This input method will be referred to as \say{arm}
+\item Using the wristband and the gesture of turning the wrist as described in Figure \ref{roll}. This input method will be referred to as \say{wrist gesture}
+\item Using the wristband and the gesture of raising the lower arm as described in Figure \ref{pitch}. This input method will be referred to as \say{arm gesture}
 \end{enumerate}
 
-The two types of stimuli will be referred to as \say{num} and \say{grey} for the integer and shade of grey respectfully. With these three input methods and two stimuli a total of six different exercises must be conducted. The naming for each of these exercises is a combination of the input method and stimuli, e.g. turning your wrist to input a shade of grey will be referred to as \say{wrist\_grey}. All of the exercise's names can be seen in the top of Table \ref{latin}. The rest of this section will cover every aspect of this in more detail.
+The two types of stimuli will be referred to as \say{number scale} and \say{grey scale} for the integer and shade of grey respectfully. With these three input methods and two stimuli a total of six different exercises must be conducted. The naming for each of these exercises is a combination of the input method and stimuli, e.g. turning your wrist to input a shade of grey will be referred to as \say{wrist gesture on grey scale}. All of the exercise's names can be seen in the top of Table \ref{latin}. The rest of this section will cover every aspect of this in more detail.
 
 In Figure \ref{ex_jakob} we see a participant during the training before the experiment, is shows how the experiment was setup and provides a good basic understanding of how the experiment was executed.
 
@@ -30,7 +30,7 @@ Out of the twenty four participants 18 where men and 6 where female. The mean ag
 \begin{figure}[h!]
     \centering
     \includegraphics[width=.6\textwidth]{figures/age_gender.png}
-    \caption{Age and gender distribution of the 24 participants: 18 males in blue \& 6 females in red}
+    \caption{Age and gender distribution of the 24 participants: 18 males in blue and 6 females in red}
     \label{age_gender}
 \end{figure}
 
@@ -48,152 +48,131 @@ For the experiment three pieces of hardware was used:
 \item A computer used to fill in the survey after the experiment. In the experiment a MacBook Pro 13 inch model was used, although the computer used isn't important
 \end{enumerate}
 
-\subsection{App}
-The app created for the experiment is built upon the same code as the companion app described in Chapter \ref{implementation}, but changed to fit the experiment. Has three main functions: Settings, Train and Experiment as seen in Figure \ref{app_main}. The settings is for configuring the experiment and exporting or deleting the collected data as seen in Figure \ref{app_settings}. Two variables can be changed that has influence on the experiment, the first is the \say{Number of stimuli}, this value will change the number of stimuli the participant has to rate for each exercise, the number of stimuli can be changed in steps of five. The \say{Next Subject ID} will change the ID used to identify each subject in the data. The order of exercises for the participant is bases on this value. Both of these settings should not be changed though out the experiment, so that the participant's IDs will be in sequential order and that they have the same amount of stimuli for each exercise. For this experiment the number of stimuli was set two 20 based on pilots tests.
-
-Beside these two settings there is the option to \say{Toggle back button}, when this option is enabled a \say{Back} button will appear on any screen in the app, and when pressed will go back to the main screen. This option is purely for debugging allowing one two go back to the main screen at any point, during the experiment this options should be disabled. 
+\subsection{Tablet App}
+The app created for the experiment is built upon the same code as the companion app described in Chapter \ref{implementation}, but changed to fit the experiment. Has three main functions: Settings, Train and Experiment as seen in Figure \ref{app_main}. The settings is for configuring the experiment and exporting or deleting the collected data as seen in Figure \ref{app_settings}. Two variables can be changed that has influence on the experiment, the first is the \say{Number of stimuli}, this value will change the number of stimuli the participant has to rate for each exercise, the number of stimuli can be changed in steps of five. The \say{Next Subject ID} will change the ID used to identify each subject in the data. The order of exercises for the participant is bases on this value. Both of these settings should not be changed though out the experiment, so that the participant's IDs will be in sequential order and that they have the same amount of stimuli for each exercise. For this experiment the number of stimuli was set to 20 based on pilots tests. Beside these two settings there is the option to \say{Toggle back button}, when this option is enabled a \say{Back} button will appear on any screen in the app, and when pressed will go back to the main screen. This option is purely for debugging allowing one two go back to the main screen at any point, during the experiment this options should be disabled. 
 
 The last actions on this screen is to export and delete data. There are two options to export the date: \say{Move data} and \say{Email data}, the first will simply copy the collected data from the internal storage of the app to the external storage on the tablet so it can be accessed by any file manager. The later will also copy the date to external storage, but it will create an intent to email the data which will start the default email app and attach the data. \say{Delete data} will delete the collected data from internal storage, a confirmation prompt will appear first to prevent accidental deletion. Whenever the main or setting screen is accessed, the current battery percentage from the MetaMotionR is displayed on the screen, keeping an eye on this prevent the wristband to run out of power in the middle of the experiment.
 
 \begin{figure}[h!]
-\centering
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen0.png}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/tablet_screen0.png}
   \captionof{figure}{Experiment app main screen}
   \label{app_main}
-\end{minipage}%
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen1.png}
-  \captionof{figure}{Settings screen}
-  \label{app_settings}
-\end{minipage}
 \end{figure}
 
-The train screen is made to let the participant practice using the wristband device and get a feeling of the scale. When this screen is activated the wristband will be programmed similar as explained in Chapter \ref{implementation}, when the button is pressed it will read the orientation from its IMU and transmit it to the tablet. The light will flash and vibration motor will do a short pulse to provide feedback. The difference between the previous described implementation and the programming for the experiment is that instead of logging the data for later export, it will transmit it instantly. When the orientation data is received by the app it will map the Euler angles to a 0-10 scale and display the result. The mapping is dependant on the toggle switch, if the switch is in the \say{Hand} position as in Figure \ref{app_train_wrist} the mapping will depend on the roll angle and if the switch is in the \say{Arm} position as in Figure \ref{app_train_arm} the mapping will depend on the pitch angle. This of course correspond to the gestures described in Figure \ref{roll} and \ref{pitch}. As mentioned the roll angle will always be between -90º and 90º depending if the orientation clock or counter clock wise compared to 0º (horizontal). To map the values to a 0-10 scale the absolute value is divided by 9, e.g 90º/-90º will become 10, 45º/-45º will become 5, 25º/-25º will become 2.7778 etc. Mathematically this can be expressed with this function where \emph{sv} is the scaled value from 0-10 and \emph{ra} is the Euler angle for the roll axis:
-\begin{center}
-$sv\left ( ra \right ) = \frac{abs\left (ra\right )}{9}$
-\end{center}
-
-A consequence of this mapping is that if the participant turn the wristband pass the vertical position the scaled value will begin to decrease. This means that the participant won't achieve a 10 rating simply by turning the wrist way beyond the vertical position. A different solution could be made to detect when the wristband pass the vertical position and set the scaled value at 10. It can be debated as to which solution is the greater, but by letting the scaled value decrease will force the participant to get a better sense of the scale and won't allow \say{lazy} responses.
-
-Mapping the pitch angle is a little more complicated, since the roll value will be between -180º and 180º. The soltuion is to create a function that maps the value differently depending if the absolute pitch angle is greater than 90, basically first mapping the -180º to 180º range down to a -90º to 90º degree range, and then mapping it to the scaled value. This function will express this where \emph{sv} is the scaled value from 0-10 and \emph{pa} is the Euler angle for the pitch axis:
-\begin{center}
-$sv\left ( pa \right ) = \left\{\begin{matrix}
-\frac{90-\left ( abs\left ( pa \right )-90 \right )}{9} & if\ pa> 90 \\ 
-\frac{abs\left ( pa \right )}{9} & otherwise
-\end{matrix}\right.$
-\end{center}
-
-This mapping has the same property as explained before, where if the pitch angle goes pass the vertical position the scaled value will decrease.
+\begin{figure}[h!]
+    \centering
+  \includegraphics[width=0.6\linewidth]{figures/tablet_screen1.png}
+  \captionof{figure}{Settings screen}
+  \label{app_settings}
+\end{figure}
 
 
+
+
+The train screen is made to let the participant practice using the wristband device and get a feeling of the scale. When this screen is activated the wristband will be programmed similar as explained in Chapter \ref{implementation}, when the button is pressed it will read the orientation from its IMU and transmit it to the tablet. The light will flash and vibration motor will do a short pulse to provide feedback. The difference between the previous described implementation and the programming for the experiment is that instead of logging the data for later export, it will transmit it instantly. When the orientation data is received by the app it will map the Euler angles to a 0-10 scale and display the result. The mapping is dependant on the toggle switch, if the switch is in the \say{Hand} position as in Figure \ref{app_train_wrist} the mapping will depend on the roll angle and if the switch is in the \say{Arm} position as in Figure \ref{app_train_arm} the mapping will depend on the pitch angle. This of course correspond to the gestures described in Figure \ref{roll} and \ref{pitch}. Mapping the Euler angles to the scaled value is done in the same way as described in Chapter \ref{design_ch} using the simple mathematical functions as seen in Equation \ref{eq_roll} and \ref{eq_pitch}. In order to map the two functions from a 0-10 scale to the grey scale (0.49) and number scale (0-100), the result of the the functions are multiplied by 4.9 and 10 for each scale receptively.
 
 
 \begin{figure}[h!]
-\centering
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen3.png}
-  \captionof{figure}{Train screen hand (wrist) mode}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/tablet_screen3.png}
+  \captionof{figure}{Train screen Hand (wrist gesture) mode}
   \label{app_train_wrist}
-\end{minipage}%
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen4.png}
-  \captionof{figure}{Train screen arm mode}
-  \label{app_train_arm}
-\end{minipage}
 \end{figure}
+
+\begin{figure}[h!]
+    \centering
+  \includegraphics[width=0.6\linewidth]{figures/tablet_screen4.png}
+  \captionof{figure}{Train screen Arm (arm gesture) mode}
+  \label{app_train_arm}
+\end{figure}
+
 
 The last screen is the experiment itself, this is the most complicated screen and consist of many \say{sub screens}. Before the experiment begin a screen for inputting the gender and age of the participant is presented as seen in Figure \ref{app_ex_start}. In the top right the assigned ID for the participant is showed, this is just for confirmation and to be used in the survey after the experiment (so the survey and experiment data can be synchronized if needed). Once the \say{Start} button is pressed the experiment will begin. As mentioned the experiment consist of six exercises and the order of these is dependent on Table \ref{latin}. Before each exercise an explanation screen will show, this screen will have some text to explain the task of the exercise and a short GIF that illustrates it. The text will stay on top during the whole exercise. This screen purpose is to make sure the participant is sure of what task they are required to do, the participant will have gotten instructions beforehand, so this screen is just reassure them. Three of the six explanation screens can be seen in Figure \ref{app_slider_explain}, \ref{app_arm_explain} and \ref{app_wrist_explain}.
 
+
 \begin{figure}[h!]
-\centering
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen5.png}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/tablet_screen5.png}
   \captionof{figure}{Experiment start screen}
   \label{app_ex_start}
-\end{minipage}%
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen6.png}
-  \captionof{figure}{slider\_grey explanation screen}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+  \includegraphics[width=0.6\linewidth]{figures/tablet_screen6.png}
+  \captionof{figure}{Slider on grey scale explanation screen}
   \label{app_slider_explain}
-\end{minipage}
 \end{figure}
 
+
 \begin{figure}[h!]
-\centering
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen12.png}
-  \captionof{figure}{arm\_num explanation screen}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/tablet_screen12.png}
+  \captionof{figure}{Arm gesture on number scale explanation screen}
   \label{app_arm_explain}
-\end{minipage}%
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen13.png}
-  \captionof{figure}{wrist\_grey explanation screen}
-  \label{app_wrist_explain}
-\end{minipage}
 \end{figure}
 
-After the explanation screen each exercise follow the same pattern: show stimuli, wait for input, refresh input (optional), register input, next input. This pattern is repeated until the set number of stimuli has been shown and then the next exercise is started, after all six exercises are completed a \say{finish} screen is shown. The slider\_grey exercise will be used to explain this pattern in more detail. After the exercise explanation the first stimuli is shown as seen in Figure \ref{app_show_stim}, then the participant registers a input using the slider as seen in Figure \ref{app_input_slider}, a small vertical bar indicate the input. The input can be changed simply by adjusting the slider (for arm and wrist exercises the participant can just press the button on the wristband again), to register the input the participant has to press the \say{Submit} button as seen in Figure \ref{app_input_slider}. Once the input has been registered the stimuli will disappear and the participant has to press the \say{Next} button as seen in Figure \ref{app_next_stim}, this button will alternate to appear on the left and right side of the screen (this will be explained later), once the button has been pressed the next stimuli will appear (as seen in Figure \ref{app_repeat})and the process will repeat until the participant has been through the set amount of stimuli and moves on to the next exercise. In Figure \ref{app_wrist_int} we see a screen from the wrist\_num exercise where the participant has pressed the button on the wristband, beside the feedback from the wristband (light and vibration) the screen also show that the button has been pressed, but no feedback is given on what value was registered nor how well they performed. This was done on purpose to reflect the real life use case where the user wouldn't know the registered value before importing it to the companion app. In Figure \ref{app_finish} we see the \say{Finish} screen after the participant has completed the experiment. All app screens shown here plus a couple extra can be seen in larger scale in Appendix \ref{ex_app_screens}.
+\begin{figure}[h!]
+    \centering
+  \includegraphics[width=0.6\linewidth]{figures/tablet_screen13.png}
+  \captionof{figure}{Wrist gesture on grey scale explanation screen}
+  \label{app_wrist_explain}
+\end{figure}
+
+
+After the explanation screen each exercise follow the same pattern: show stimuli, wait for input, refresh input (optional), register input, next input. This pattern is repeated until the set number of stimuli has been shown and then the next exercise is started, after all six exercises are completed a \say{finish} screen is shown. The slider on grey scale exercise will be used to explain this pattern in more detail. After the exercise explanation the first stimuli is shown as seen in Figure \ref{app_show_stim}, then the participant registers a input using the slider as seen in Figure \ref{app_input_slider}, a small vertical bar indicate the input. The input can be changed simply by adjusting the slider (for arm and wrist gesture exercises the participant can just press the button on the wristband again), to register the input the participant has to press the \say{Submit} button as seen in Figure \ref{app_input_slider}. Once the input has been registered the stimuli will disappear and the participant has to press the \say{Next} button as seen in Figure \ref{app_next_stim}, this button will alternate to appear on the left and right side of the screen (this will be explained later), once the button has been pressed the next stimuli will appear (as seen in Figure \ref{app_repeat})and the process will repeat until the participant has been through the set amount of stimuli and moves on to the next exercise. In Figure \ref{app_wrist_int} we see a screen from the wrist gesture on number scale exercise where the participant has pressed the button on the wristband, beside the feedback from the wristband (light and vibration) the screen also show that the button has been pressed, but no feedback is given on what value was registered nor how well they performed. This was done on purpose to reflect the real life use case where the user wouldn't know the registered value before importing it to the companion app. In Figure \ref{app_finish} we see the \say{Finish} screen after the participant has completed the experiment. All app screens shown here plus a couple extra can be seen in larger scale in Appendix \ref{ex_app_screens}.
+
 
 \begin{figure}[h!]
-\centering
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen7.png}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/tablet_screen7.png}
   \captionof{figure}{Show stimuli screen with shade of grey}
   \label{app_show_stim}
-\end{minipage}%
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen8.png}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+  \includegraphics[width=0.6\linewidth]{figures/tablet_screen8.png}
   \captionof{figure}{Participant has given an input using the slider}
   \label{app_input_slider}
-\end{minipage}
 \end{figure}
 
+
 \begin{figure}[h!]
-\centering
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen9.png}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/tablet_screen9.png}
   \captionof{figure}{Next stimuli screen}
   \label{app_next_stim}
-\end{minipage}%
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen10.png}
-  \captionof{figure}{Pattern is repeated}
-  \label{app_repeat}
-\end{minipage}
 \end{figure}
 
 \begin{figure}[h!]
-\centering
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen16.png}
-  \captionof{figure}{Input registered from wristband with integer stimuli}
-  \label{app_wrist_int}
-\end{minipage}%
-\begin{minipage}{.55\textwidth}
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/tablet_screen17.png}
-  \captionof{figure}{Finished experiment screen}
-  \label{app_finish}
-\end{minipage}
+    \centering
+  \includegraphics[width=0.6\linewidth]{figures/tablet_screen10.png}
+  \captionof{figure}{Pattern is repeated}
+  \label{app_repeat}
 \end{figure}
 
-The stimuli for each exercise follow a specific set of rules. First of all the stimuli for each exercise is independent. For num exercises the stimuli is generated by creating an array of integers from 0-100, e.g. [0, 1, 2 .. 98, 99, 100]. This array is shuffled so the order is random. When a stimuli is needed the first element in the array is used, once used it is removed from the array. Once the array is empty the process is repeated. For grey exercises the process is the same, but the array consist of integers from 0-49, here 0 correspond to pure white, 49 is pure black and the rest are the shaded of grey in between. The shaded of grey are the same as used by Matejka et al.\cite{grey} as seen in Figure \ref{50shades}, where each shade is of equal distance from each other in the CIELAB color space\cite{cielab}. What this means is that the order of stimuli is completely random, but the distribution of stimuli is completely even, this means that for each participant the stimuli is random but not repeated, while keeping the overall even distribution between participants. Again emphasizing on the fact that the stimuli for each exercise is independent.
 
-The data collected from the experiment is described in Table \ref{data_in}. Data is recorded whenever the participant pressed the submit button for each trial. With the six exercises each having 20 trials, this results in 120 data points for each participant and a total of 2880 data points for the complete experiment. Most of the data is self explanatory and doesn't need further explanation than the table. The \say{type} refers to the exercise. \say{type\_order} refers to the order of the exercises, this data is redundant since it can be deducted based on the \say{id} and Table \ref{latin}. \say{stim\_order} is the order the stimuli had and is also redundant since it can be deducted based on the time stamp, but if any of these were to be investigated this would greatly reduce the work. The \say{pitch}, \say{roll} and \say{yaw} are the Euler angles recorded, these could be used to change the mapping functions from Euler angles to scaled value without needing to redo experiment (these values are only recorded for wrist and arm exercises). The \say{reaction\_time} is recorded from when the stimuli was shown on screen until the participant pressed the submit button. The data collected is saved to a CSV file in the apps internal storage, and can be exported from the settings screen as described earlier. Beside this data, a separate data file was created where to total time taken to complete the experiment (from pressing start in Figugre \ref{app_ex_start} to the finsih screen was shown).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/tablet_screen16.png}
+  \captionof{figure}{Input registered from wristband with integer stimuli}
+  \label{app_wrist_int}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+  \includegraphics[width=0.6\linewidth]{figures/tablet_screen17.png}
+  \captionof{figure}{Finished experiment screen}
+  \label{app_finish}
+\end{figure}
+
+
+The stimuli for each exercise follow a specific set of rules. First of all the stimuli for each exercise is independent. For number scale exercises the stimuli is generated by creating an array of integers from 0-100, e.g. [0, 1, 2 .. 98, 99, 100]. This array is shuffled so the order is random. When a stimuli is needed the first element in the array is used, once used it is removed from the array. Once the array is empty the process is repeated. For grey scale exercises the process is the same, but the array consist of integers from 0-49, here 0 correspond to pure white, 49 is pure black and the rest are the shaded of grey in between. The shaded of grey are the same as used by Matejka et al.\cite{grey} as seen in Figure \ref{50shades}, where each shade is of equal distance from each other in the CIELAB color space\cite{cielab}. What this means is that the order of stimuli is completely random, but the distribution of stimuli is completely even, this means that for each participant the stimuli is random but not repeated, while keeping the overall even distribution between participants. Again emphasizing on the fact that the stimuli for each exercise is independent.
+
+The data collected from the experiment is described in Table \ref{data_in}. Data is recorded whenever the participant pressed the submit button for each trial. With the six exercises each having 20 trials, this results in 120 data points for each participant and a total of 2880 data points for the complete experiment. Most of the data is self explanatory and doesn't need further explanation than the table. The \say{type} refers to the exercise, the keyword for each exercise should be self explanatory. \say{type\_order} refers to the order of the exercises, this data is redundant since it can be deducted based on the \say{id} and Table \ref{latin}. \say{stim\_order} is the order the stimuli had and is also redundant since it can be deducted based on the time stamp, but if any of these were to be investigated this would greatly reduce the work. The \say{pitch}, \say{roll} and \say{yaw} are the Euler angles recorded, these could be used to change the mapping functions from Euler angles to scaled value without needing to redo experiment (these values are only recorded for wrist and arm gesture exercises). The \say{reaction\_time} is recorded from when the stimuli was shown on screen until the participant pressed the submit button. The data collected is saved to a CSV file in the apps internal storage, and can be exported from the settings screen as described earlier. Beside this data, a separate data file was created where to total time taken to complete the experiment (from pressing start in Figugre \ref{app_ex_start} to the finsih screen was shown).
 
 
 % Please add the following required packages to your document preamble:
@@ -244,21 +223,21 @@ After completing the experiment they were handed the survey (Appendix \ref{surve
 % Design % Design % Design %  Design %
 % % % % % % % % % % % % % % % % % % % %
 \section{Design}
-This experiment was a 3 $\times$ 2 within-subject design, with two independent variables (numbers and shades of grey) testing three dependent variables (the input methods, slider, arm, wrist) \textbf{Jakob: er det korrekt antaget?}. The independent variables has the stimuli value associated to it, likewise the dependent variables has the response (scaled value) associated to it. The goal of the experiment is to compare the accuracy of the dependent variables to each other with the independent variables being the ground truth.
+This experiment was a 3 $\times$ 2 within-subject design. There was three input methods: the slider, wrist gesture and arm gesture. Te input types was shades of grey and numbers. The independent variables has the stimuli value associated to it, likewise the dependent variables has the response (input value) associated to it. The goal of the experiment is to compare the accuracy of the dependent variables to each other with the independent variables being the ground truth.
 
 The within-subject design was chosen in order to achieve more data with less participants, this also balance any variance due to participants’ predispositions and it will be approximately the same across test conditions. Unfortunately this can introduce bias because of the practice effect. To prevent this as much as possible counterbalancing has been introduced using the balanced Latin square seen in Table \ref{latin}. This requires a multiple of six participants and it was decided to have 24 participants providing a good amount of data while still being achievable within the given time frame.
 
 Each of the six exercises consisted of 20 trials, with 24 participants that totaled to 2880 trials/data points in total.
 
+
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
 \begin{table}[]
-\centering
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{rcccccc}
 \cline{2-7}
-\multicolumn{1}{r|}{Exercise} & \multicolumn{1}{l|}{slider\_grey} & \multicolumn{1}{l|}{slider\_num} & \multicolumn{1}{l|}{wrist\_grey} & \multicolumn{1}{l|}{wrist\_num} & \multicolumn{1}{l|}{arm\_grey} & \multicolumn{1}{l|}{arm\_num} \\ \cline{2-7} 
-\multicolumn{1}{r|}{ID} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{3} & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{5} \\ \cline{2-7} 
+\multicolumn{1}{r|}{Exercise} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}slider on\\ grey scale\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}slider on\\ number scale\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}wrist gesture on\\ grey scale\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}wrist gesture on\\ number scale\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}arm gesture on\\ grey scale\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}arm gesture on\\ number scale\end{tabular}} \\ \cline{2-7} 
+\multicolumn{1}{r|}{ID} & \multicolumn{1}{c|}{\textbf{0}} & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{2}} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{4}} & \multicolumn{1}{c|}{\textbf{5}} \\ \cline{2-7} 
 \multicolumn{1}{l}{} &  & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} \\
  & \multicolumn{6}{c}{Exercise Order} \\
 Participant id & First & Second & Third & Fourth & Fifth & Sixth \\ \cline{2-7} 
@@ -270,7 +249,7 @@ Participant id & First & Second & Third & Fourth & Fifth & Sixth \\ \cline{2-7}
 \multicolumn{1}{r|}{5, 11, 17, 23} & \multicolumn{1}{c|}{\textbf{5}} & \multicolumn{1}{c|}{\textbf{0}} & \multicolumn{1}{c|}{\textbf{4}} & \multicolumn{1}{c|}{\textbf{1}} & \multicolumn{1}{c|}{\textbf{3}} & \multicolumn{1}{c|}{\textbf{2}} \\ \cline{2-7} 
 \end{tabular}%
 }
-\caption{Exercise ordering table based on a Balanced Latin Square}
+\caption{Exercise ordering based on a Balanced Latin Square}
 \label{latin}
 \end{table}
 
@@ -285,13 +264,13 @@ Participant id & First & Second & Third & Fourth & Fifth & Sixth \\ \cline{2-7}
 % % % % % % % % % % % % % % % % % % % % % 
 % PILOT TEST % PILOT TEST % PILOT TEST %
 % % % % % % % % % % % % % % % % % % % % %
-\section{Pilot tests}
-Small pilot test was ran throughout the development of the experiment and app. This ensured that the experiment stayed as streamlined as possible. When the implementation of the experiment app was completed some pilots test was ran in order to determine how long it took to complete the exercises. Figure \ref{pilot} shows the results of seven pilots with varying numbers of stimuli for each exercise. Not surprisingly there was a linear correlation between number of stimuli and completion time. It was a goal to only have the experiment take about 15 minutes for each participant, with about 10 minutes for the experiment and 5 minutes for introduction, training, survey etc. Therefor based on the results 20 stimuli per exercise was chosen, since it took about 10 minutes to complete.
+\section{Pilot Tests}
+Small pilot test was ran throughout the development of the experiment and app. This ensured that the experiment stayed as streamlined as possible. When the implementation of the experiment app was completed some pilots test was ran in order to determine how long it took to complete the exercises. Figure \ref{pilot} shows the results of seven pilots with varying numbers of stimuli for each exercise. Not surprisingly there was a linear correlation between number of stimuli and completion time. It was a goal to only have the experiment take about 15 minutes for each participant, with about 10 minutes for the experiment and 5 minutes for introduction, training, survey etc. Therefore based on the results 20 stimuli per exercise was chosen, since it took about 10 minutes to complete.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/comp_time.png}
-    \caption{Completion time of pilot tests}
+    \includegraphics[width=0.6\textwidth]{figures/comp_time.png}
+    \caption{Completion time of pilot tests, with the regression line in red}
     \label{pilot}
 \end{figure}
 
